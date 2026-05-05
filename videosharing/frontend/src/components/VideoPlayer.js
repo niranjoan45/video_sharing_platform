@@ -18,7 +18,7 @@ const VideoPlayer = () => {
     const fetchVideo = async () => {
       try {
         const isPublic = location.pathname.startsWith('/public-video');
-        const endpoint = isPublic ? `http://localhost:5000/api/videos/public/${id}` : `http://localhost:5000/api/videos/${id}`;
+        const endpoint = isPublic ? `${process.env.REACT_APP_API_URL}/api/videos/public/${id}` : `${process.env.REACT_APP_API_URL}/api/videos/${id}`;
         const response = await fetch(endpoint);
         if (!response.ok) {
           throw new Error('Failed to fetch video');
@@ -44,7 +44,7 @@ const VideoPlayer = () => {
 
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/videos/${id}/comments`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/videos/${id}/comments`);
         if (response.ok) {
           const data = await response.json();
           setComments(data);
@@ -88,7 +88,7 @@ const VideoPlayer = () => {
       return;
     }
     try {
-      await fetch(`http://localhost:5000/api/videos/${id}/like`, {
+      await fetch(`${process.env.REACT_APP_API_URL}/api/videos/${id}/like`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ const VideoPlayer = () => {
     
     setSubmittingComment(true);
     try {
-      const response = await fetch(`http://localhost:5000/api/videos/${id}/comment`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/videos/${id}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ const VideoPlayer = () => {
         body: JSON.stringify({ text: newComment })
       });
       if (response.ok) {
-        const commentsResponse = await fetch(`http://localhost:5000/api/videos/${id}/comments`);
+        const commentsResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/videos/${id}/comments`);
         const commentsData = await commentsResponse.json();
         setComments(commentsData);
         setNewComment('');
@@ -148,7 +148,7 @@ const VideoPlayer = () => {
         width="100%"
         style={{ maxHeight: '70vh' }}
         preload="metadata"
-        src={`http://localhost:5000/videos/${video.videoUrl.replace('videos\\', '').replace('videos/', '')}`}
+        src={`${process.env.REACT_APP_API_URL}/videos/${video.videoUrl.replace('videos\\', '').replace('videos/', '')}`}
         onError={handleVideoError}
       />
       <Typography variant="body1" sx={{ mt: 2, color: 'white' }}>

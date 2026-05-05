@@ -30,7 +30,7 @@ const ShareModal = ({ open, onClose, video }) => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/auth/users', {
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/auth/users`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUsers(response.data);
@@ -51,7 +51,7 @@ const ShareModal = ({ open, onClose, video }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `http://localhost:5000/api/videos/${video._id}/share`,
+        `${process.env.REACT_APP_API_URL}/api/videos/${video._id}/share`,
         { userIds: selectedUsers },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -69,7 +69,7 @@ const ShareModal = ({ open, onClose, video }) => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `http://localhost:5000/api/videos/${video._id}/public`,
+        `${process.env.REACT_APP_API_URL}/api/videos/${video._id}/public`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -84,7 +84,7 @@ const ShareModal = ({ open, onClose, video }) => {
   };
 
   const handleCopyLink = () => {
-    const publicLink = `http://localhost:3000/public-video/${video._id}`;
+    const publicLink = `${window.location.origin}/public-video/${video._id}`;
     navigator.clipboard.writeText(publicLink);
     setSnackbarMessage('Public link copied to clipboard!');
     setSnackbarOpen(true);

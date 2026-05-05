@@ -1,11 +1,11 @@
 @echo off
 echo Starting Video Sharing Platform...
 
-start "Backend Server" cmd /k "cd /d \"c:\Users\Ajith Krishna Swamy\Downloads\videosharing\videosharing\backend\" && npm start"
+start "Backend Server" cmd /k "cd /d \"c:/Users/Ajith Krishna Swamy/OneDrive/Desktop/videosharing/videosharing/backend\" && npm start"
 
 timeout /t 3 /nobreak > nul
 
-start "Frontend Server" cmd /k "cd /d \"c:\Users\Ajith Krishna Swamy\Downloads\videosharing\videosharing\frontend\" && npm start"
+start "Frontend Server" cmd /k "cd /d \"c:/Users/Ajith Krishna Swamy/OneDrive/Desktop/videosharing/videosharing/frontend\" && npm start"
 
 echo Servers starting...
 echo Backend: http://localhost:5000

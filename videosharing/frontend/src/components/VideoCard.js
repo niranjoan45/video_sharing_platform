@@ -48,7 +48,7 @@ const VideoCard = ({ video }) => {
         <CardMedia
           component="img"
           height="180"
-          image={video.thumbnailUrl ? `http://localhost:5000/uploads/${video.thumbnailUrl.replace('uploads\\', '').replace('uploads/', '')}` : 'https://via.placeholder.com/320x180?text=No+Thumbnail'}
+          image={video.thumbnailUrl ? `${process.env.REACT_APP_API_URL}/uploads/${video.thumbnailUrl.replace('uploads\\', '').replace('uploads/', '')}` : 'https://via.placeholder.com/320x180?text=No+Thumbnail'}
           alt={video.title}
           sx={{ borderRadius: '12px 12px 0 0' }}
         />
