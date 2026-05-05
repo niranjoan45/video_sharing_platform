@@ -1,41 +1,12 @@
-# TODO: Fix Frontend Compilation by Creating Missing Components
+# Video Sharing Platform Setup & Run TODO
 
-- [x] Create Header.js component
-- [ ] Create CategoryChips.js component
-- [ ] Create VideoGrid.js component
-- [ ] Create VideoPlayer.js component
-- [ ] Create UploadVideo.js component
-- [ ] Create Auth.js component
+## Steps to Complete:
+1. [x] Fix `start-servers.bat` with correct project paths (Desktop/OneDrive)
+2. [x] Create/update `videosharing/backend/.env` with MONGODB_URI (local MongoDB required)
+3. [x] Install backend dependencies: `cd videosharing/backend && npm install` (up to date, audit fix run)
+4. [x] Install frontend dependencies: `cd videosharing/frontend && npm install`
+5. [ ] Ensure MongoDB is running (port 27017, db 'video')
+6. [ ] Run servers: Use fixed `start-servers.bat` or `npm run dev` (backend) + `npm start` (frontend)
+7. [ ] Verify: localhost:3000 (register/login/upload), API at localhost:5000
 
-# TODO: Add Background Images to Pages
-
-- [x] Download Netflix background image
-- [x] Replace with higher resolution image
-- [x] Add background to Auth.js (landing/login/register page)
-- [x] Add background to Dashboard.js (dashboard page)
-- [ ] Test the frontend to verify background images are applied
-
-# TODO: Fix Video Functionality
-
-- [x] Fix thumbnail URLs in VideoCard.js (change port to 5001 and path to /uploads/)
-- [x] Fix video fetch URL in VideoPlayer.js (change port to 5001)
-- [x] Fix video src URL in VideoPlayer.js (use /videos/ path)
-- [ ] Test video clicking and thumbnail display
-
-# TODO: Implement Video Sharing Feature
-
-- [x] Update Video model to include sharedWith array
-- [x] Add backend route for private sharing: POST /videos/:id/share
-- [x] Add backend route for public sharing: GET /videos/public/:id
-- [x] Add backend route to get all users: GET /users
-- [x] Add Share button to VideoCard component
-- [x] Create ShareModal component for sharing options
-- [x] Test public and private sharing functionality
-
-# TODO: Implement User Profile Feature
-
-- [x] Add backend route to get videos shared with user: GET /videos/shared
-- [x] Create Profile.js component with user details and messages section
-- [x] Add /profile route in App.js
-- [x] Add profile link in Sidebar.js
-- [x] Test profile display and shared videos
+**Status:** Deps installed (ignore Windows npm warnings). Awaiting MongoDB confirmation. Run `start-servers.bat` once Mongo ready. Backend: http://localhost:5000, Frontend: http://localhost:3000

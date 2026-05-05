@@ -48,7 +48,7 @@ const VideoCard = ({ video }) => {
         <CardMedia
           component="img"
           height="180"
-          image={`http://localhost:5000/uploads/${video.thumbnailUrl.replace('uploads\\', '').replace('uploads/', '')}`}
+          image={video.thumbnailUrl ? `http://localhost:5000/uploads/${video.thumbnailUrl.replace('uploads\\', '').replace('uploads/', '')}` : 'https://via.placeholder.com/320x180?text=No+Thumbnail'}
           alt={video.title}
           sx={{ borderRadius: '12px 12px 0 0' }}
         />
@@ -88,7 +88,7 @@ const VideoCard = ({ video }) => {
               {video.title}
             </Typography>
             <Typography variant="body2" color="rgba(255, 255, 255, 0.7)">
-              {video.userId.username}
+              {video.userId?.username || 'Unknown User'}
             </Typography>
             <Typography variant="body2" color="rgba(255, 255, 255, 0.7)">
               {formatViews(video.views)} views

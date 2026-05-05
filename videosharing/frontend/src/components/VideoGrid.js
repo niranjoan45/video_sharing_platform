@@ -15,7 +15,17 @@ const VideoGrid = ({ selectedCategory = 'All' }) => {
           throw new Error('Failed to fetch videos');
         }
         const data = await response.json();
-        setVideos(data);
+        const mappedData = data.map(v => ({
+          ...v,
+          _id: v.id,
+          thumbnailUrl: v.thumbnail_url,
+          videoUrl: v.video_url,
+          userId: {
+            _id: v.user_id,
+            username: v.username
+          }
+        }));
+        setVideos(mappedData);
       } catch (err) {
         setError(err.message);
       } finally {
